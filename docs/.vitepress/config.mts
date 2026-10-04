@@ -322,6 +322,10 @@ export default defineConfig({
           text: "Community",
           items: [
             { text: "Contributing", link: "/community/contributing" },
+            {
+              text: "Onboarding Plan",
+              link: "/community/onboarding-plan",
+            },
             { text: "Code of Conduct", link: "/community/code-of-conduct" },
             {
               text: "Enhancement Proposals",
