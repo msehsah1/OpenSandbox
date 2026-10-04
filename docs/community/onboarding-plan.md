@@ -747,7 +747,7 @@ would otherwise mis-teach later changes.
 
 After that lands, Candidate 2 is a natural follow-up.
 
-Work the [35 warm-up exercises](/community/onboarding-exercises) before opening
+Work the [45 warm-up exercises](/community/onboarding-exercises) before opening
 a first pull request. They live in `onboarding/exercises/` — each folder has a
 task README plus a `solution/` with step-by-step notes. Language is Python for
 server/SDK/CLI drills and Go for execd, ingress, egress, controller, and

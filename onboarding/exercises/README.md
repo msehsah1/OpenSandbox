@@ -1,6 +1,6 @@
 # OpenSandbox contribution warm-up exercises
 
-35 small drills extracted from the [contributor onboarding plan](../../docs/community/onboarding-plan.md).
+45 small drills extracted from the [contributor onboarding plan](../../docs/community/onboarding-plan.md).
 Each one isolates one pattern you will meet in a real pull request.
 
 Language is chosen from the real subsystem:
@@ -46,7 +46,12 @@ go test ./16-gin-ping-token/solution ./17-validate-command/solution \
   ./28-alloc-status-compat/solution ./29-egress-domain-match/solution \
   ./30-parse-byte-range/solution ./31-sanitize-command-log/solution \
   ./32-strip-hop-headers/solution ./33-constant-time-token/solution \
-  ./34-idempotent-pause/solution ./35-requeue-backoff/solution
+  ./34-idempotent-pause/solution ./35-requeue-backoff/solution \
+  ./36-parse-expires-b36/solution ./37-parse-access-keys/solution \
+  ./38-parse-otlp-endpoint/solution ./39-burst-tracker/solution \
+  ./40-expand-path-env/solution ./41-host-selector-overlap/solution \
+  ./42-match-ip-cidr/solution ./43-normalize-interval-set/solution \
+  ./44-oss-target-digest/solution ./45-classify-connect-error/solution
 ```
 
 Run every Python reference:
@@ -56,7 +61,7 @@ cd onboarding/exercises
 python3 -m pytest -q */solution
 ```
 
-## The 35 exercises
+## The 45 exercises
 
 | # | Exercise | Language | Trains you for | Maps to |
 | - | -------- | -------- | -------------- | ------- |
@@ -95,5 +100,15 @@ python3 -m pytest -q */solution
 | 33 | [Constant-time token compare](33-constant-time-token/) | Go | Access-token auth | execd / egress `subtle` |
 | 34 | [Idempotent pause dispatch](34-idempotent-pause/) | Go | Controller reconcile | pause skip when already Paused |
 | 35 | [Requeue backoff](35-requeue-backoff/) | Go | Retry jitter | `components/internal/supervisor/backoff.go` |
+| 36 | [Parse expires_b36](36-parse-expires-b36/) | Go | Signed-route format | `components/ingress/pkg/signature/signature.go` |
+| 37 | [Parse secure-access keys](37-parse-access-keys/) | Go | Ingress key ring | `ParseKeys` (`key_id=base64`) |
+| 38 | [Parse an OTLP endpoint](38-parse-otlp-endpoint/) | Go | Telemetry URL | `components/internal/telemetry/endpoint.go` |
+| 39 | [Sliding-window burst](39-burst-tracker/) | Go | Crash-loop guard | `components/internal/supervisor/burst.go` |
+| 40 | [Expand a path with env](40-expand-path-env/) | Go | Working-dir vars | execd `pathutil.ExpandPathWithEnv` |
+| 41 | [Host selector overlap](41-host-selector-overlap/) | Go | OSEP-0023 algebra | `components/egress/pkg/hostselector` |
+| 42 | [Match IP / CIDR](42-match-ip-cidr/) | Go | Egress IP targets | `netip` in `policy.go` |
+| 43 | [Normalize nft intervals](43-normalize-interval-set/) | Go | Conflicting CIDRs | `components/egress/pkg/nftables/interval.go` |
+| 44 | [OSS target digest](44-oss-target-digest/) | Go | Node-agent identity | `components/nodeagent/pkg/identity` |
+| 45 | [Classify connect errors](45-classify-connect-error/) | Go | Dial taxonomy | ingress `connectivity.ClassifyConnectError` |
 
-Work in order. 01–07 are the create path. 11–14 are the SDK path. 16–23 are execd. 25 is the docs-first contribution drill. 26–35 are Go-land drills for ingress, egress, controller annotations, and shared runtime helpers.
+Work in order. 01–07 are the create path. 11–14 are the SDK path. 16–23 are execd. 25 is the docs-first contribution drill. 26–45 are Go-land drills for ingress, egress, controller, telemetry, supervisor, and node-agent helpers.
