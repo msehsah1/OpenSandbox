@@ -1,12 +1,12 @@
 # OpenSandbox contribution warm-up exercises
 
-25 small drills extracted from the [contributor onboarding plan](../../docs/community/onboarding-plan.md).
+35 small drills extracted from the [contributor onboarding plan](../../docs/community/onboarding-plan.md).
 Each one isolates one pattern you will meet in a real pull request.
 
 Language is chosen from the real subsystem:
 
 - **Python** for the lifecycle server, Python SDK, and CLI
-- **Go** for execd (and the same request/validation habits used in ingress/egress)
+- **Go** for execd, ingress, egress, the Kubernetes controller, and shared runtime helpers
 
 You do not need Docker, Kubernetes, or a running OpenSandbox server.
 
@@ -41,7 +41,12 @@ Go 1.22+ is enough for these drills (production execd wants 1.25):
 cd onboarding/exercises
 go test ./16-gin-ping-token/solution ./17-validate-command/solution \
   ./18-run-command/solution ./21-safe-join/solution \
-  ./23-json-errors/solution ./24-prefix-router/solution
+  ./23-json-errors/solution ./24-prefix-router/solution \
+  ./26-parse-ingress-route/solution ./27-endpoints-annotation/solution \
+  ./28-alloc-status-compat/solution ./29-egress-domain-match/solution \
+  ./30-parse-byte-range/solution ./31-sanitize-command-log/solution \
+  ./32-strip-hop-headers/solution ./33-constant-time-token/solution \
+  ./34-idempotent-pause/solution ./35-requeue-backoff/solution
 ```
 
 Run every Python reference:
@@ -51,7 +56,7 @@ cd onboarding/exercises
 python3 -m pytest -q */solution
 ```
 
-## The 25 exercises
+## The 35 exercises
 
 | # | Exercise | Language | Trains you for | Maps to |
 | - | -------- | -------- | -------------- | ------- |
@@ -80,5 +85,15 @@ python3 -m pytest -q */solution
 | 23 | [Structured JSON errors](23-json-errors/) | Go | Error codes | execd `RespondError` |
 | 24 | [ID-prefix router](24-prefix-router/) | Go | `fsb-` backend split | `CompositeSandboxService._backend` |
 | 25 | [Spec/docs alignment test](25-spec-alignment/) | Python | First recommended PR | create-path 202 vs Pending docs |
+| 26 | [Parse an ingress route](26-parse-ingress-route/) | Go | Host/URI routing | `components/ingress/pkg/proxy/host_route_parse.go` |
+| 27 | [Endpoints annotation](27-endpoints-annotation/) | Go | BatchSandbox addresses | `kubernetes/pkg/utils/endpoints.go` |
+| 28 | [Alloc-status compatibility](28-alloc-status-compat/) | Go | Annotation stability | `sandbox.opensandbox.io/alloc-status` |
+| 29 | [Egress FQDN / wildcard](29-egress-domain-match/) | Go | Deny-wins policy | `components/egress/pkg/policy/policy.go` |
+| 30 | [Parse a byte Range](30-parse-byte-range/) | Go | File download clamp | execd `ParseRange` |
+| 31 | [Sanitize command logs](31-sanitize-command-log/) | Go | Secret masking | `components/execd/pkg/log/sanitize.go` |
+| 32 | [Strip hop-by-hop headers](32-strip-hop-headers/) | Go | Reverse-proxy hygiene | `components/ingress/pkg/proxy/header.go` |
+| 33 | [Constant-time token compare](33-constant-time-token/) | Go | Access-token auth | execd / egress `subtle` |
+| 34 | [Idempotent pause dispatch](34-idempotent-pause/) | Go | Controller reconcile | pause skip when already Paused |
+| 35 | [Requeue backoff](35-requeue-backoff/) | Go | Retry jitter | `components/internal/supervisor/backoff.go` |
 
-Work in order. 01–07 are the create path. 11–14 are the SDK path. 16–23 are execd. 25 is the docs-first contribution drill.
+Work in order. 01–07 are the create path. 11–14 are the SDK path. 16–23 are execd. 25 is the docs-first contribution drill. 26–35 are Go-land drills for ingress, egress, controller annotations, and shared runtime helpers.
