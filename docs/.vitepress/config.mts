@@ -326,6 +326,10 @@ export default defineConfig({
               text: "Onboarding Plan",
               link: "/community/onboarding-plan",
             },
+            {
+              text: "Onboarding Exercises",
+              link: "/community/onboarding-exercises",
+            },
             { text: "Code of Conduct", link: "/community/code-of-conduct" },
             {
               text: "Enhancement Proposals",

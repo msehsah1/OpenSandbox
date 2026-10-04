@@ -12,7 +12,8 @@ The contributing guide is maintained in the repository root to keep GitHub's con
 </a>
 
 For a repository-grounded path from first read to a first pull request, see the
-[contributor onboarding plan](/community/onboarding-plan).
+[contributor onboarding plan](/community/onboarding-plan) and the
+[25 warm-up exercises](/community/onboarding-exercises).
 
 ## Contributor Advancement
 
