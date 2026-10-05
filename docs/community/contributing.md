@@ -11,6 +11,10 @@ The contributing guide is maintained in the repository root to keep GitHub's con
   Read the Contributing Guide on GitHub →
 </a>
 
+For a repository-grounded path from first read to a first pull request, see the
+[contributor onboarding plan](/community/onboarding-plan) and the
+[45 warm-up exercises](/community/onboarding-exercises).
+
 ## Contributor Advancement
 
 OpenSandbox maintains an explicit advancement process for contributors to become component maintainers or project maintainers. For nomination requirements, voting periods, and approval thresholds, see the project governance guide:
