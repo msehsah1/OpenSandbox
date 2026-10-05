@@ -5,6 +5,15 @@ blocking. The server starts a daemon thread and completes an
 `asyncio.Future`. You will break the event loop if you call Docker on the
 main coroutine.
 
+## Objective
+
+Contribute Docker-service changes without freezing the control plane.
+The Docker SDK is blocking; calling it on the FastAPI event loop
+stalls every other create. This drill is the daemon-thread +
+`asyncio.Future` pattern in `DockerSandboxService.create_sandbox`,
+which you must keep (or replace with an equivalent offload) whenever
+you touch that path.
+
 ## Task
 
 `async def create_sandbox(provision, *args)`:

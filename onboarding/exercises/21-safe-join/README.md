@@ -4,6 +4,14 @@
 `filepath.Join(root, "../etc/passwd")` can escape if you do not check the
 result stays under root.
 
+## Objective
+
+Contribute execd filesystem APIs without path traversal. Upload,
+download, and list join a sandbox root with a user path;
+`filepath.Join` alone can escape to `/etc/passwd`. This is
+security-reviewed. This drill is the `SafeJoin` check required in any
+file-API PR.
+
 ## Task
 
 `SafeJoin(root, userPath string) (string, error)`

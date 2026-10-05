@@ -3,6 +3,13 @@
 **Language: Go.** execd `RespondError` writes `{"code","message"}` with an
 HTTP status. Handlers should not `c.String(400, err.Error())`.
 
+## Objective
+
+Contribute execd errors that SDKs already parse. `RespondError`
+writes `{"code","message"}`. `c.String(400, err.Error())` breaks
+every client. This drill is the envelope you must use when adding a
+new execd error code or handler.
+
 ## Task
 
 ```go

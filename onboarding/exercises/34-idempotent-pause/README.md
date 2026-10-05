@@ -3,6 +3,14 @@
 **Language: Go.** The controller must not dispatch pause again when the
 BatchSandbox is already `Paused` (merged PR #2082). Reconcile can run twice.
 
+## Objective
+
+Contribute controller pause/resume without double-dispatch.
+Reconcile can run twice; a BatchSandbox already `Paused` must not get
+another pause job (merged PR #2082). This drill is that state
+machine. Any pause, snapshot, or phase-transition PR needs
+`changed=false` no-ops for already-terminal phases.
+
 ## Task
 
 ```go

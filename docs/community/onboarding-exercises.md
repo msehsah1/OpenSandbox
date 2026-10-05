@@ -14,8 +14,10 @@ Language follows the real subsystem:
 - **Python** for the lifecycle server, Python SDK, and CLI
 - **Go** for execd, ingress, egress, the Kubernetes controller, node-agent, and shared runtime helpers
 
-Each exercise folder has a task `README.md` and a `solution/` directory with
-working code plus a short step-by-step `README.md`.
+Each exercise folder has a task `README.md` (including a contribution
+**Objective**: which OpenSandbox change the drill prepares you to make)
+and a `solution/` directory with working code plus a short step-by-step
+`README.md`.
 
 Start at the pack index:
 

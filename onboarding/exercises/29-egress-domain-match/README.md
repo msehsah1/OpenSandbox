@@ -6,6 +6,14 @@ not match `*.example.com`. A wildcard also does **not** match the bare
 suffix (`example.com` vs `*.example.com`) — same as
 `components/egress/pkg/policy/policy.go`.
 
+## Objective
+
+Contribute egress allow/deny rules (OSEP-0001) that are label-aware.
+`strings.Contains` lets `notexample.com` through a `*.example.com`
+rule; a wildcard must not match the apex either. Deny wins. This
+drill is `components/egress/pkg/policy` — the core of any policy
+evaluation PR, without nftables.
+
 ## Task
 
 ```go

@@ -5,6 +5,15 @@ base-36 Unix-seconds segment and a 9-character signature
 (`8` lowercase hex + `1` key id `[0-9a-z]`). Bad format must fail
 before any HMAC work.
 
+## Objective
+
+Contribute signed-route parsing that fails closed before HMAC.
+Expiry is lowercase base-36; the signature is 8 hex + 1 key id.
+Uppercase, leading zeros, or the wrong length must not reach crypto.
+This drill is `ParseExpiresB36` / `ValidateSignatureFormat` in
+`components/ingress/pkg/signature`. You need it for secure-access or
+host-label PRs.
+
 ## Task
 
 ```go

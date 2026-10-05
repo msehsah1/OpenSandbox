@@ -4,6 +4,14 @@
 poll `GET /command/status/:id`. Status must distinguish running vs finished
 and keep the exit code.
 
+## Objective
+
+Contribute background `/command` and `/command/status` without races.
+Clients poll an id; status must be concurrency-safe and keep the exit
+code after the goroutine finishes. This drill is `GetCommandStatus`.
+A store that drops finished commands or unlocks badly will fail SDK
+e2e.
+
 ## Task
 
 ```go

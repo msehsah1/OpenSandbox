@@ -6,6 +6,15 @@ must accept the legacy shape; writers should emit the current shape.
 
 `kubernetes/AGENTS.md` treats this JSON as stability-sensitive.
 
+## Objective
+
+Contribute pool-allocation annotation changes without breaking
+rolling upgrades. Readers must still accept legacy `{"pods":[...]}`;
+writers emit `poolRef` and `generation`. Renaming `pods` or requiring
+the new fields on read breaks in-cluster objects.
+`kubernetes/AGENTS.md` calls this out. This drill is that compat
+rule.
+
 ## Task
 
 ```go

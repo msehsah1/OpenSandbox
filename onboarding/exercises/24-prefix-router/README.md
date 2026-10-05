@@ -4,6 +4,14 @@
 Kubernetes controller and ingress also branch on sandbox identity. Keep the
 rule identical: IDs starting with `fsb-` are FastSandbox.
 
+## Objective
+
+Contribute Go-side backend dispatch that matches the Python
+composite service (exercise 06). Ingress and the Kubernetes
+controller also branch on `fsb-`. If the prefix rule drifts between
+languages, FastSandbox IDs hit the wrong provider. This drill is
+that shared identity split.
+
 ## Task
 
 ```go

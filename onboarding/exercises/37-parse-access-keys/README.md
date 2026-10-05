@@ -5,6 +5,14 @@
 (uppercase rejected). Empty segments are skipped; an empty secret or
 bad base64 is an error.
 
+## Objective
+
+Contribute ingress `--secure-access-keys` parsing without dropping a
+key or accepting `A=` (uppercase). A bad parse can disable signed
+routes or leave one kid unused. This drill is `ParseKeys`. Flag and
+key-ring PRs must keep the one-char `[0-9a-z]` + standard-base64
+contract.
+
 ## Task
 
 ```go

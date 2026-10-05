@@ -3,6 +3,14 @@
 **Language: Go.** Ingress is a reverse proxy. RFC 7230 hop-by-hop headers
 and `OpenSandbox-Ingress-To` must not be forwarded to the sandbox workload.
 
+## Objective
+
+Contribute ingress proxy header hygiene. RFC 7230 hop-by-hop headers
+and `OpenSandbox-Ingress-To` must not reach the sandbox workload —
+that would leak the routing target. Copy, do not mutate, the request
+header map. This drill is `components/ingress/pkg/proxy/header.go`,
+required for any forward/WebSocket header PR.
+
 ## Task
 
 ```go

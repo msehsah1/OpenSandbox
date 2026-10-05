@@ -3,6 +3,14 @@
 **Language: Go.** Foreground `/command` is `exec.CommandContext` plus captured
 stdout/stderr/exit. This is the core of `runtime.runCommand` without SSE.
 
+## Objective
+
+Contribute foreground exec without confusing process failure with
+daemon failure. Non-zero exit is a `Result`, not a Go error; only
+start failures are errors. This drill is `runtime.runCommand`. You
+need this shape for any execd PR that changes how stdout/stderr/exit
+are captured.
+
 ## Task
 
 ```go

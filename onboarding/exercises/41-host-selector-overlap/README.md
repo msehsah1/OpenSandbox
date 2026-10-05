@@ -8,6 +8,14 @@ both selectors — nested wildcards overlap.
 This drill uses the **canonical ASCII** form (no IDNA). Reject IP
 literals, single-label names, empty labels, and uppercase.
 
+## Objective
+
+Contribute OSEP-0023 host selectors for credential-vault / TLS
+policy. Wildcards match proper subdomains only; overlap decides
+whether two rules can claim the same hostname. A bad overlap lets
+conflicting credentials apply. This drill is
+`components/egress/pkg/hostselector` — the algebra, not IDNA.
+
 ## Task
 
 ```go

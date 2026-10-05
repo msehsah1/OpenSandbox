@@ -5,6 +5,15 @@
 scope — this is connect only. Use `errors.Is` / `errors.As` so wrapped
 errors still match.
 
+## Objective
+
+Contribute ingress network-readiness shadow mode. Dial errors are
+classified (`timeout`, `unreachable`, `dns_error`, …); HTTP/TLS are
+out of scope. Misclassifying DNS as timeout changes the degraded
+signal. This drill is `ClassifyConnectError` in
+`components/ingress/pkg/proxy/connectivity`. Use `errors.Is` / `As`
+on any new connect-error path.
+
 ## Task
 
 ```go

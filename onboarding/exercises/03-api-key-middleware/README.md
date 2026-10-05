@@ -4,6 +4,15 @@
 `OPEN-SANDBOX-API-KEY`. This is the first middleware you will read in
 `server/opensandbox_server/middleware/auth.py`.
 
+## Objective
+
+Contribute to server auth without opening an unauthenticated route.
+New lifecycle endpoints inherit `OPEN-SANDBOX-API-KEY` unless they are
+explicitly allowlisted (`/health`). This drill is the middleware in
+`server/opensandbox_server/middleware/auth.py` so you can add a route
+or change local-dev “no keys configured” behavior without a 401
+regression or a security hole.
+
 ## Task
 
 Wrap a FastAPI app:

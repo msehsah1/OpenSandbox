@@ -12,7 +12,7 @@ You do not need Docker, Kubernetes, or a running OpenSandbox server.
 
 ## How to use each exercise
 
-1. Read the exercise `README.md` (task, signatures, and why the language was chosen).
+1. Read the exercise `README.md` (contribution objective, task, signatures, and why the language was chosen). Each drill’s **Objective** says which OpenSandbox PR you are warming up for.
 2. Implement it yourself in a scratch file or by copying the signatures.
 3. Compare with `solution/` and read `solution/README.md` for the steps.
 4. Run the tests from `solution/` to confirm the reference works.

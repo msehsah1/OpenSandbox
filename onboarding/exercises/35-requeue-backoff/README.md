@@ -4,6 +4,14 @@
 delay, min/max clamps, and jitter. A tight retry loop without backoff will
 fail Kind e2e and production apiservers.
 
+## Objective
+
+Contribute controller/supervisor retries that will not hammer the
+apiserver. Tight requeue without jitter fails Kind e2e and production
+rate limits. This drill is `components/internal/supervisor/backoff.go`
+(double, clamp, jitter). Use it when you add a requeue or restart
+loop.
+
 ## Task
 
 ```go

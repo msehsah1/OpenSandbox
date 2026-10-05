@@ -5,6 +5,15 @@
 `OPENSANDBOX_SERVER_API_KEY` from the environment. Config loading is the first
 server file you will touch.
 
+## Objective
+
+Contribute to the lifecycle server’s boot path. Operators load
+`~/.sandbox.toml` and override with env vars; a PR that changes config
+keys, defaults, or precedence (`OPENSANDBOX_SERVER_API_KEY` vs
+`[server].api_key`) will land in `server/opensandbox_server/config.py`.
+This drill trains you to keep that order so existing installs keep
+working.
+
 ## Task
 
 Implement `load_config(path=None) -> dict` in `config.py`:

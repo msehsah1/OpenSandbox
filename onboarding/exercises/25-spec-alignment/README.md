@@ -5,6 +5,15 @@ docs that still say create returns `Pending` while the spec and OpenAPI test
 say create waits and returns `Running`. This drill is a regression test you
 could add next to `test_create_sandbox_openapi_describes_synchronous_provisioning`.
 
+## Objective
+
+Contribute the recommended first docs PR: architecture text still
+describes create as returning `Pending` / async, while
+`specs/sandbox-lifecycle.yml` and the server wait and return
+`Running` (HTTP 202). This drill is a regression test you could land
+next to the OpenAPI create-path test — a real, reviewable change
+that does not need Docker or a cluster.
+
 ## Task
 
 `assert_create_contract(openapi: dict, architecture_text: str) -> list[str]`

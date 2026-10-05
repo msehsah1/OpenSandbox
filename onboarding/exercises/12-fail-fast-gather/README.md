@@ -4,6 +4,14 @@
 endpoints together. `asyncio.gather` would leave the sibling retrying after
 a 401. `_gather_fail_fast` cancels the rest.
 
+## Objective
+
+Contribute endpoint-readiness code that cancels siblings on the first
+failure. After create, the SDK resolves execd and egress together; a
+401 must not leave the other side retrying. This drill is
+`_gather_fail_fast` in `sandbox.py`. You will need it when you add
+another parallel probe or change create-time health checks.
+
 ## Task
 
 `async def gather_fail_fast(*awaitables) -> list`

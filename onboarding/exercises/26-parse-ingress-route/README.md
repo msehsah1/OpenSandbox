@@ -5,6 +5,14 @@
 `/<sandbox-id>/<port>/<path>`. Sandbox IDs themselves contain hyphens, so
 the port is the **last** `-` segment (or the second URI segment).
 
+## Objective
+
+Contribute ingress routing without mis-splitting sandbox IDs. IDs
+contain hyphens; the port is the **last** `-` segment (header) or the
+second URI segment. A wrong split 404s or proxies to the wrong
+workload. This drill is `parseHostRoute` / `parseURIRoute` in
+`components/ingress` — required for any host-mode or URI-mode PR.
+
 ## Task
 
 ```go

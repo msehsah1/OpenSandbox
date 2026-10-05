@@ -5,6 +5,14 @@ child that crash-loops. A ring of size `BurstMax` records launch times;
 the burst is exceeded when the ring is full **and** the oldest of those
 launches is still inside `BurstWindow`.
 
+## Objective
+
+Contribute supervisor restart policy so a crash-looping child does
+not take the node. The ring is full **and** the oldest launch is
+still inside the window. This drill is
+`components/internal/supervisor/burst.go`. Any restart, sidecar, or
+mitmproxy launch PR should keep this guard.
+
 ## Task
 
 ```go

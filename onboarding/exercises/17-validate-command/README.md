@@ -4,6 +4,14 @@
 before starting a process. Bad cwd/empty command must be 400, not a panic
 inside `exec.Command`.
 
+## Objective
+
+Contribute execd request validation so bad input is 400, not a panic
+in `exec.Command`. Empty command, negative timeout, and relative cwd
+are rejected in `RunCommandRequest.Validate()` before a process
+starts. This drill is that gate — skip it and a command-API PR
+becomes a 500 under fuzz.
+
 ## Task
 
 ```go

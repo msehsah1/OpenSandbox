@@ -4,6 +4,14 @@
 not FastAPI’s default `{"detail": ...}` string. Tests and SDKs match on
 `code`.
 
+## Objective
+
+Contribute API errors that SDKs and tests can match. Lifecycle
+clients key off `{"code","message"}`, not FastAPI’s default
+`{"detail": ...}`. Changing the envelope breaks every language SDK.
+This drill is the `HTTPException` shape you must keep when adding a
+new error code or handler.
+
 ## Task
 
 `raise_sandbox_error(status: int, code: str, message: str)` raises

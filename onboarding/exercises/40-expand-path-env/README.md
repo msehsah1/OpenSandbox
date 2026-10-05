@@ -5,6 +5,14 @@ a leading `~`. Undefined variables must fail (do not silently expand to
 empty). Inject the env map — do not read `os.Environ` — so the drill is
 deterministic.
 
+## Objective
+
+Contribute execd working-directory handling without turning a missing
+`$VAR` into `""` (which can resolve to `/`). `${VAR}`, `$VAR`, and
+`~` are supported; undefined names must error. This drill is
+`pathutil.ExpandPathWithEnv`. Required for cwd, volume, or path-flag
+PRs in execd.
+
 ## Task
 
 ```go

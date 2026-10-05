@@ -4,6 +4,14 @@
 uses `urllib.parse.parse_qsl(..., strict_parsing=True)`. Malformed metadata
 must become 400 `INVALID_METADATA_FORMAT`, not a 500.
 
+## Objective
+
+Contribute list-filter changes that fail 400, not 500. `GET
+/v1/sandboxes?metadata=` is parsed with `parse_qsl(strict_parsing=True)`.
+A malformed query must become `INVALID_METADATA_FORMAT`. This drill is
+the helper in `api/lifecycle.py` so a list-API PR does not turn
+operator typos into unhandled exceptions.
+
 ## Task
 
 `parse_metadata(metadata: str | None) -> dict[str, str]`.

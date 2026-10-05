@@ -4,6 +4,14 @@
 CIDR (`netip`). Matching must not treat `10.1.2.3` as a string prefix of
 `10.1.2.0/24` — use `netip.Prefix.Contains`.
 
+## Objective
+
+Contribute egress IP/CIDR targets without string-prefix bugs.
+`10.1.2.3` is not “in” `10.1.2.0/24` because the text starts with
+`10.1.2`. Use `netip`. This drill is `normalizePolicy` /
+`StaticIPSets` in `components/egress/pkg/policy`. Policy PRs that
+match IPs with `HasPrefix` are security defects.
+
 ## Task
 
 ```go

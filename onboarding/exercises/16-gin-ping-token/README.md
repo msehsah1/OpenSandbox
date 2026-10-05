@@ -3,6 +3,14 @@
 **Language: Go.** execd is a Gin daemon. `/ping` is reachable before the
 runtime-init gate and without `X-EXECD-ACCESS-TOKEN`. Business routes are not.
 
+## Objective
+
+Contribute execd router/auth changes. `/ping` must stay reachable
+without `X-EXECD-ACCESS-TOKEN` (probes and runtime-init); business
+routes must not. This drill is `components/execd/pkg/web/router.go` —
+usually the first file in an execd PR that adds a route or changes
+the access-token gate.
+
 ## Task
 
 `NewRouter(accessToken string) *gin.Engine`

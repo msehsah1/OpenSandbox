@@ -4,6 +4,14 @@
 blank line) as the process emits lines. The SDK client from exercise 14
 consumes this shape.
 
+## Objective
+
+Contribute the execd side of the command-stream protocol. SDKs
+(exercise 14) parse `event:` / `data:` and
+`execution_complete`. Renaming events or changing the JSON is a
+cross-repo break. This drill is the writer in `RunCommand` so a
+streaming PR stays wire-compatible.
+
 ## Task
 
 `WriteSSE(w io.Writer, event, data string) error` writes one event.

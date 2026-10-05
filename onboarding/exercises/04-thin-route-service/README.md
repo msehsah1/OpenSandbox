@@ -4,6 +4,14 @@
 the API layer, work in `SandboxService`. Business logic in a handler is a
 review reject.
 
+## Objective
+
+Contribute FastAPI changes that pass `server/AGENTS.md` review. Routes
+validate and return status codes; `SandboxService` does the work.
+Putting Docker or Kubernetes calls in a handler is a common first-PR
+reject. This drill is the layering you must keep when you add or
+change `/v1` endpoints.
+
 ## Task
 
 - `SandboxService` ABC with `async create_sandbox(request) -> dict`.

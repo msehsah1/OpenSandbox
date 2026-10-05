@@ -4,6 +4,14 @@
 must not appear in logs. `SanitizeCommand` / `MaskToken` live in
 `components/execd/pkg/log/sanitize.go`.
 
+## Objective
+
+Contribute execd logging without leaking secrets. Command lines
+carry `password=`, `token=`, and `Authorization: Bearer`. Those
+values must not appear in logs. This drill is
+`components/execd/pkg/log/sanitize.go`. Reviewers will reject a
+logging PR that prints the raw command.
+
 ## Task
 
 ```go

@@ -4,6 +4,15 @@
 generated client. You must parse `event:` / `data:` lines and infer an exit
 code from `execution_complete` / stderr errors.
 
+## Objective
+
+Contribute command-streaming client changes without relying on the
+generated OpenAPI client. SSE (`event:` / `data:`) is handwritten in
+`CommandsAdapter`. Event names and `execution_complete` are a public
+protocol shared with execd. This drill is the parser you must keep
+aligned when you add an event type or change how exit codes are
+inferred.
+
 ## Task
 
 `parse_sse(payload: str) -> list[dict]` where each event is

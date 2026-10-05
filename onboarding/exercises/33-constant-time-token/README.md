@@ -4,6 +4,14 @@
 to a configured secret. `==` on strings is not constant-time and leaks length
 via early return. Use `crypto/subtle`.
 
+## Objective
+
+Contribute execd/egress access-token checks that do not leak length
+via `==`. Reviewers expect `crypto/subtle` (hash both sides, then
+compare digests). This drill is the compare used for
+`X-EXECD-ACCESS-TOKEN` and similar. A token-auth PR that uses string
+equality is a security reject.
+
 ## Task
 
 ```go

@@ -5,6 +5,14 @@
 `kubernetes`. FastSandbox is composed under Kubernetes, not a third
 `runtime.type`.
 
+## Objective
+
+Contribute runtime selection without inventing a third
+`runtime.type`. The factory only accepts `docker` and `kubernetes`;
+FastSandbox is composed under Kubernetes. PRs that add
+`runtime.type = fastsandbox` fight the architecture. This drill is
+`create_sandbox_service()` so you extend composition, not the enum.
+
 ## Task
 
 `create_sandbox_service(runtime_type: str) -> str` (return a label, not a

@@ -5,6 +5,14 @@ smaller CIDR that sits strictly inside another listed CIDR
 ("conflicting intervals specified"). Egress drops the redundant
 entries before `nft add element`.
 
+## Objective
+
+Contribute nftables static sets that `nft add element` will accept.
+`flags interval` rejects a host sitting inside a listed CIDR
+(“conflicting intervals”). If apply fails, the sandbox loses egress.
+This drill is `components/egress/pkg/nftables/interval.go` — run it
+on every static allow/deny update.
+
 ## Task
 
 ```go
